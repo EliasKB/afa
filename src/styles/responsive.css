@@ -1,0 +1,90 @@
+@media (max-width: 1080px) {
+  .hero-layout,
+  .main-grid,
+  .footer-grid,
+  .about-layout,
+  .policy-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .chapter-sidebar {
+    position: static;
+  }
+
+  .hero-emblem-shell {
+    justify-content: start;
+  }
+
+  .goal-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 820px) {
+  .site-header,
+  .site-main {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .header-bar {
+    grid-template-columns: 1fr;
+    align-items: stretch;
+  }
+
+  .utility-links,
+  .header-actions {
+    justify-content: flex-start;
+  }
+
+  .utility-links {
+    gap: 18px;
+  }
+
+  .header-actions {
+    padding-left: 0;
+    border-left: 0;
+  }
+
+  .section-menu {
+    position: static;
+    width: auto;
+    margin-top: 12px;
+  }
+
+  .section-menu-list {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-layout {
+    min-height: auto;
+    padding: 52px 0 46px;
+  }
+
+  .content-section,
+  .chapter-sidebar-rail,
+  .site-footer {
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+}
+
+@media (max-width: 640px) {
+  .notice-item,
+  .detail-row,
+  .goal-item {
+    grid-template-columns: 1fr;
+  }
+
+  .section-header h2 {
+    font-size: 1.9rem;
+  }
+
+  .hero-copy h1 {
+    font-size: 3rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.2rem;
+  }
+}

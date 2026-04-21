@@ -1,3 +1,12 @@
+import { chapterEvents } from './chapterEvents';
+
+function withChapterEvents(language, items) {
+  return items.map((item) => ({
+    ...item,
+    ...(chapterEvents[language][item.id] ?? {}),
+  }));
+}
+
 export const siteContent = {
   sv: {
     navigation: {
@@ -13,7 +22,6 @@ export const siteContent = {
     header: {
       brandName: 'AFA',
       utilityLinks: [
-        { label: 'Nyheter', target: 'news' },
         { label: 'Stöd oss', target: 'support' },
         { label: 'Kontakt', target: 'contact' },
       ],
@@ -35,8 +43,7 @@ export const siteContent = {
       tagline: 'Connecting Minds, Empowering Futures.',
       lead:
         'AFA samlar afghanska akademiker i Sverige i ett professionellt nätverk för kunskapsutbyte, yrkesmässig utveckling och långsiktig gemenskap.',
-      body:
-        'Webbplatsen ska ge ett tydligt och seriöst första intryck: vilka vi är, vad vi arbetar för, hur lokal närvaro ser ut och hur fler kan bidra eller komma i kontakt med organisationen.',
+      body: '',
       primaryAction: {
         label: 'Läs om AFA',
         target: 'about',
@@ -45,6 +52,13 @@ export const siteContent = {
         label: 'Se våra mål',
         target: 'purpose',
       },
+      socialLabel: 'Sociala medier',
+      socialPrompt: 'Följ och anslut till oss på sociala medier',
+      socialLinks: [
+        { label: 'Discord', icon: 'discord', href: 'https://discord.gg/9RSMFK6W' },
+        { label: 'Instagram', icon: 'instagram', href: 'https://www.instagram.com/academics_from_afghanistan/' },
+        { label: 'LinkedIn', icon: 'linkedin', href: 'https://www.linkedin.com/company/109980083' },
+      ],
     },
     sidebar: {
       eyebrow: 'Regional närvaro',
@@ -92,6 +106,8 @@ export const siteContent = {
       intro:
         'AFA ska presenteras som en organisation med tydligt syfte, professionell identitet och en långsiktig ambition att skapa värde för medlemmar och samhälle.',
       paragraphs: [
+        'Academics from Afghanistan, AFA, är en ideell community i Sverige som stöttar akademiker med afghansk bakgrund.',
+        'Målet är att hjälpa medlemmar att omsätta sin kompetens till framgångsrika karriärer och bidra till samhällsutveckling både i Sverige och i Afghanistan.',
         'AFA är ett växande nätverk där afghanska akademiker kan mötas kring arbete, utbildning, erfarenhetsutbyte och gemensam utveckling. Sidan ska kommunicera trovärdighet, struktur och ansvarstagande snarare än kampanjkänsla.',
         'Innehållet ska hjälpa besökare att snabbt förstå organisationens roll: en plattform för samverkan, professionella relationer och kunskapsdelning mellan personer med olika bakgrund, kompetenser och regional förankring.',
       ],
@@ -100,6 +116,27 @@ export const siteContent = {
         'Nationellt nätverk',
         'Kunskapsutbyte',
         'Lokal förankring',
+      ],
+      meetingLabel: 'Möten',
+      meetingInfo: 'Torsdagar kl. 19:00, jämna veckor.',
+      focusAreasTitle: 'Fokusområden',
+      focusAreas: [
+        {
+          title: 'Karriärstöd',
+          description: 'Mentorskap, karriärcoachning och CV-granskning.',
+        },
+        {
+          title: 'Kunskapsutbyte',
+          description: 'Kurser, YouTube-innehåll och diskussionsforum.',
+        },
+        {
+          title: 'Innovation',
+          description: 'Främjar entreprenörskap och nya initiativ, till exempel hackathons.',
+        },
+        {
+          title: 'Samhällsbidrag',
+          description: 'Inspirerar unga och stödjer utbildningsinsatser i Afghanistan.',
+        },
       ],
     },
     purpose: {
@@ -127,7 +164,7 @@ export const siteContent = {
       title: 'Lokalavdelningar',
       intro:
         'När sektionen öppnas ska varje lokalavdelning framstå som en del av en större nationell struktur, med kortfattad men professionell information.',
-      items: [
+      items: withChapterEvents('sv', [
         {
           id: 'chapter-stockholm',
           label: 'Lokalavdelning',
@@ -156,7 +193,7 @@ export const siteContent = {
           summary:
             'Binder samman akademiker i norra Sverige och stärker kontaktytor över större geografiska avstånd.',
         },
-      ],
+      ]),
     },
     policy: {
       id: 'policy',
@@ -269,7 +306,6 @@ export const siteContent = {
     header: {
       brandName: 'AFA',
       utilityLinks: [
-        { label: 'News', target: 'news' },
         { label: 'Support Us', target: 'support' },
         { label: 'Contact', target: 'contact' },
       ],
@@ -291,8 +327,7 @@ export const siteContent = {
       tagline: 'Connecting Minds, Empowering Futures.',
       lead:
         'AFA brings together Afghan academics in Sweden through a professional network focused on knowledge exchange, career development, and long-term community.',
-      body:
-        'The website should create an immediate sense of credibility by clearly explaining who the organization is, what it works toward, how local chapters are structured, and how visitors can contribute or get in touch.',
+      body: '',
       primaryAction: {
         label: 'Learn About AFA',
         target: 'about',
@@ -301,6 +336,13 @@ export const siteContent = {
         label: 'See Our Goals',
         target: 'purpose',
       },
+      socialLabel: 'Social media',
+      socialPrompt: 'Join us on social media',
+      socialLinks: [
+        { label: 'Discord', icon: 'discord', href: 'https://discord.gg/9RSMFK6W' },
+        { label: 'Instagram', icon: 'instagram', href: 'https://www.instagram.com/academics_from_afghanistan/' },
+        { label: 'LinkedIn', icon: 'linkedin', href: 'https://www.linkedin.com/company/109980083' },
+      ],
     },
     sidebar: {
       eyebrow: 'Regional presence',
@@ -348,6 +390,8 @@ export const siteContent = {
       intro:
         'AFA should be presented as an organization with a clear purpose, a professional identity, and a long-term ambition to create value for members and society.',
       paragraphs: [
+        'Academics from Afghanistan, AFA, is a non-profit community in Sweden that supports academics with an Afghan background.',
+        'Its goal is to help members turn their competence into successful careers and contribute to social development in both Sweden and Afghanistan.',
         'AFA is a growing network where Afghan academics can connect around work, education, knowledge exchange, and shared development. The site should communicate credibility, structure, and responsibility rather than campaign energy.',
         'The content should help visitors quickly understand the organization’s role: a platform for collaboration, professional relationships, and shared knowledge among people with different backgrounds, competencies, and regional ties.',
       ],
@@ -356,6 +400,27 @@ export const siteContent = {
         'National network',
         'Knowledge exchange',
         'Local presence',
+      ],
+      meetingLabel: 'Meetings',
+      meetingInfo: 'Thursdays at 19:00, every other week.',
+      focusAreasTitle: 'Focus Areas',
+      focusAreas: [
+        {
+          title: 'Career Support',
+          description: 'Mentorship, career coaching, and CV review.',
+        },
+        {
+          title: 'Knowledge Exchange',
+          description: 'Courses, YouTube content, and discussion forums.',
+        },
+        {
+          title: 'Innovation',
+          description: 'Encourages entrepreneurship and new initiatives, such as hackathons.',
+        },
+        {
+          title: 'Community Contribution',
+          description: 'Inspires young people and supports educational efforts in Afghanistan.',
+        },
       ],
     },
     purpose: {
@@ -383,7 +448,7 @@ export const siteContent = {
       title: 'Local Chapters',
       intro:
         'When opened, each chapter should feel like part of a broader national structure, with concise but professional information.',
-      items: [
+      items: withChapterEvents('en', [
         {
           id: 'chapter-stockholm',
           label: 'Local chapter',
@@ -412,7 +477,7 @@ export const siteContent = {
           summary:
             'Connects academics in northern Sweden and strengthens collaboration across greater geographic distances.',
         },
-      ],
+      ]),
     },
     policy: {
       id: 'policy',

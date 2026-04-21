@@ -6,7 +6,6 @@ import { Header } from './Header';
 const content = {
   brandName: 'AFA',
   utilityLinks: [
-    { label: 'News', target: 'news' },
     { label: 'Support Us', target: 'support' },
     { label: 'Contact', target: 'contact' },
   ],
@@ -21,6 +20,7 @@ const content = {
 
 const menuItems = [
   { id: 'about', label: 'About Us' },
+  { id: 'purpose', label: 'Purpose & Goals' },
   { id: 'news', label: 'News' },
 ];
 
@@ -46,7 +46,6 @@ describe('Header — rendering', () => {
   it('renders all utility links', () => {
     render(<Header {...defaultProps} />);
     const utilityLinks = screen.getByLabelText('Quick links');
-    expect(within(utilityLinks).getByText('News')).toBeInTheDocument();
     expect(within(utilityLinks).getByText('Support Us')).toBeInTheDocument();
     expect(within(utilityLinks).getByText('Contact')).toBeInTheDocument();
   });
@@ -115,12 +114,12 @@ describe('Header — interactions', () => {
     expect(onNavigate).toHaveBeenCalledWith('hero');
   });
 
-  it('calls onNavigate with news when News utility link is clicked', async () => {
+  it('calls onNavigate with contact when Contact utility link is clicked', async () => {
     const onNavigate = vi.fn();
     render(<Header {...defaultProps} onNavigate={onNavigate} />);
     const utilityLinks = screen.getByLabelText('Quick links');
-    await userEvent.click(within(utilityLinks).getByText('News'));
-    expect(onNavigate).toHaveBeenCalledWith('news');
+    await userEvent.click(within(utilityLinks).getByText('Contact'));
+    expect(onNavigate).toHaveBeenCalledWith('contact');
   });
 
   it('calls onNavigate with support when Support Us is clicked', async () => {

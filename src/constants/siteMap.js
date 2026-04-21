@@ -1,8 +1,9 @@
-export const defaultVisibleSections = ['news', 'about', 'purpose'];
+export const defaultVisibleSections = ['news'];
+
+export const dedicatedPageSections = ['about', 'purpose', 'chapters'];
 
 export const sectionMenuOrder = [
   'about',
-  'chapters',
   'purpose',
   'policy',
   'news',
@@ -13,9 +14,6 @@ export const sectionMenuOrder = [
 
 export const pageSectionOrder = [
   'news',
-  'about',
-  'purpose',
-  'chapters',
   'policy',
   'contact',
   'support',
@@ -25,6 +23,7 @@ export const pageSectionOrder = [
 export const footerSectionOrder = [
   'about',
   'purpose',
+  'chapters',
   'news',
   'contact',
   'support',
@@ -39,10 +38,7 @@ export const chapterAnchorMap = {
 };
 
 export const revealableSections = [
-  'about',
   'news',
-  'purpose',
-  'chapters',
   'policy',
   'contact',
   'support',

@@ -351,8 +351,8 @@
   grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.65fr);
   gap: 36px;
   align-items: center;
-  min-height: 72vh;
-  padding: 72px 48px 62px;
+  min-height: 64vh;
+  padding: 60px 48px 48px;
 }
 
 .main-grid {

@@ -5,7 +5,6 @@ import { SectionMenu } from './SectionMenu';
 
 const items = [
   { id: 'about', label: 'About Us' },
-  { id: 'chapters', label: 'Local Chapters' },
   { id: 'news', label: 'News' },
 ];
 
@@ -18,7 +17,6 @@ describe('SectionMenu — rendering', () => {
   it('renders all menu items', () => {
     render(<SectionMenu isOpen={true} items={items} onNavigate={vi.fn()} title="Navigate" />);
     expect(screen.getByText('About Us')).toBeInTheDocument();
-    expect(screen.getByText('Local Chapters')).toBeInTheDocument();
     expect(screen.getByText('News')).toBeInTheDocument();
   });
 
@@ -48,8 +46,6 @@ describe('SectionMenu — interactions', () => {
   it('calls onNavigate for each item independently', async () => {
     const onNavigate = vi.fn();
     render(<SectionMenu isOpen={true} items={items} onNavigate={onNavigate} title="Navigate" />);
-    await userEvent.click(screen.getByText('Local Chapters'));
-    expect(onNavigate).toHaveBeenCalledWith('chapters');
     await userEvent.click(screen.getByText('News'));
     expect(onNavigate).toHaveBeenCalledWith('news');
   });

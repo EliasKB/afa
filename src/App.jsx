@@ -13,7 +13,6 @@ import { PurposeSection } from './components/sections/PurposeSection';
 import { siteContent } from './content/siteContent';
 import {
   defaultVisibleSections,
-  footerSectionOrder,
   pageSectionOrder,
   sectionMenuOrder,
 } from './constants/siteMap';
@@ -21,6 +20,7 @@ import { useSiteState } from './hooks/useSiteState';
 
 function App() {
   const {
+    currentPage,
     language,
     menuOpen,
     navigateTo,
@@ -36,10 +36,45 @@ function App() {
     id,
     label: content.navigation[id],
   }));
-  const footerItems = footerSectionOrder.map((id) => ({
-    id,
-    label: content.navigation[id],
-  }));
+  const isHomePage = currentPage === 'home';
+
+  let contentSections = null;
+
+  if (currentPage === 'about') {
+    contentSections = <AboutSection content={content.about} />;
+  } else if (currentPage === 'purpose') {
+    contentSections = <PurposeSection content={content.purpose} />;
+  } else if (currentPage === 'chapters') {
+    contentSections = <ChaptersSection content={content.chapters} />;
+  } else {
+    contentSections = pageSectionOrder.map((sectionId) => {
+      if (!revealedSections.includes(sectionId)) {
+        return null;
+      }
+
+      if (sectionId === 'news') {
+        return <NewsSection key={sectionId} content={content.news} />;
+      }
+
+      if (sectionId === 'policy') {
+        return <PolicySection key={sectionId} content={content.policy} />;
+      }
+
+      if (sectionId === 'contact') {
+        return <ActionSection key={sectionId} content={content.contact} />;
+      }
+
+      if (sectionId === 'support') {
+        return <ActionSection key={sectionId} content={content.support} />;
+      }
+
+      if (sectionId === 'engage') {
+        return <ActionSection key={sectionId} content={content.engage} />;
+      }
+
+      return null;
+    });
+  }
 
   return (
     <div className="page-shell">
@@ -57,58 +92,18 @@ function App() {
       />
 
       <main className="site-main">
-        <HeroSection
-          content={content.hero}
-          darkEmblemSrc={heroEmblem}
-          lightEmblemSrc={brandLogo}
-          onNavigate={navigateTo}
-          theme={theme}
-        />
+        {isHomePage ? (
+          <HeroSection
+            content={content.hero}
+            emblemSrc={theme === 'dark' ? heroEmblem : brandLogo}
+            onNavigate={navigateTo}
+          />
+        ) : null}
 
         <div className="main-grid">
           <ChapterSidebar content={content.sidebar} onNavigate={navigateTo} />
 
-          <div className="content-column">
-            {pageSectionOrder.map((sectionId) => {
-              if (!revealedSections.includes(sectionId)) {
-                return null;
-              }
-
-              if (sectionId === 'news') {
-                return <NewsSection key={sectionId} content={content.news} />;
-              }
-
-              if (sectionId === 'about') {
-                return <AboutSection key={sectionId} content={content.about} />;
-              }
-
-              if (sectionId === 'purpose') {
-                return <PurposeSection key={sectionId} content={content.purpose} />;
-              }
-
-              if (sectionId === 'chapters') {
-                return <ChaptersSection key={sectionId} content={content.chapters} />;
-              }
-
-              if (sectionId === 'policy') {
-                return <PolicySection key={sectionId} content={content.policy} />;
-              }
-
-              if (sectionId === 'contact') {
-                return <ActionSection key={sectionId} content={content.contact} />;
-              }
-
-              if (sectionId === 'support') {
-                return <ActionSection key={sectionId} content={content.support} />;
-              }
-
-              if (sectionId === 'engage') {
-                return <ActionSection key={sectionId} content={content.engage} />;
-              }
-
-              return null;
-            })}
-          </div>
+          <div className="content-column">{contentSections}</div>
         </div>
       </main>
 

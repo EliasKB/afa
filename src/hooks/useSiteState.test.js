@@ -2,14 +2,14 @@ import { act, renderHook } from '@testing-library/react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { useSiteState } from './useSiteState';
 
-const defaultVisible = ['news', 'about', 'purpose'];
+const defaultVisible = ['news'];
 
 beforeEach(() => {
-  window.location.hash = '';
+  window.history.pushState(null, '', '/');
   document.documentElement.lang = '';
   document.documentElement.removeAttribute('data-theme');
   vi.spyOn(window, 'requestAnimationFrame').mockImplementation((cb) => { cb(); return 0; });
-  vi.spyOn(window.history, 'replaceState').mockImplementation(() => {});
+  vi.spyOn(window.history, 'pushState');
 });
 
 afterEach(() => {
@@ -35,6 +35,18 @@ describe('useSiteState — initialisation', () => {
   it('starts with the provided initial sections', () => {
     const { result } = renderHook(() => useSiteState(defaultVisible));
     expect(result.current.revealedSections).toEqual(defaultVisible);
+  });
+
+  it('reads the current page from the pathname', () => {
+    window.history.pushState(null, '', '/about');
+    const { result } = renderHook(() => useSiteState(defaultVisible));
+    expect(result.current.currentPage).toBe('about');
+  });
+
+  it('reads chapters as a dedicated page from the pathname', () => {
+    window.history.pushState(null, '', '/chapters');
+    const { result } = renderHook(() => useSiteState(defaultVisible));
+    expect(result.current.currentPage).toBe('chapters');
   });
 });
 
@@ -109,35 +121,59 @@ describe('useSiteState — navigateTo', () => {
 
   it('reveals a hidden section when navigating to it', () => {
     const { result } = renderHook(() => useSiteState(defaultVisible));
-    expect(result.current.revealedSections).not.toContain('chapters');
-    act(() => result.current.navigateTo('chapters'));
-    expect(result.current.revealedSections).toContain('chapters');
+    expect(result.current.revealedSections).not.toContain('contact');
+    act(() => result.current.navigateTo('contact'));
+    expect(result.current.revealedSections).toContain('contact');
   });
 
   it('does not duplicate an already visible section', () => {
     const { result } = renderHook(() => useSiteState(defaultVisible));
-    act(() => result.current.navigateTo('about'));
-    const count = result.current.revealedSections.filter((s) => s === 'about').length;
+    act(() => result.current.navigateTo('news'));
+    const count = result.current.revealedSections.filter((s) => s === 'news').length;
     expect(count).toBe(1);
   });
 
-  it('reveals chapters when navigating to a chapter anchor', () => {
+  it('navigates to the dedicated chapters page', () => {
+    const { result } = renderHook(() => useSiteState(defaultVisible));
+    act(() => result.current.navigateTo('chapters'));
+    expect(result.current.currentPage).toBe('chapters');
+    expect(window.history.pushState).toHaveBeenCalledWith(null, '', '/chapters');
+  });
+
+  it('routes chapter anchors to the dedicated chapters page hash', () => {
     const { result } = renderHook(() => useSiteState(defaultVisible));
     act(() => result.current.navigateTo('chapter-stockholm'));
-    expect(result.current.revealedSections).toContain('chapters');
+    expect(result.current.currentPage).toBe('chapters');
+    expect(window.history.pushState).toHaveBeenCalledWith(null, '', '/chapters#chapter-stockholm');
   });
 
-  it('updates URL hash for regular sections', () => {
+  it('navigates to /about for the dedicated about page', () => {
+    const { result } = renderHook(() => useSiteState(defaultVisible));
+    act(() => result.current.navigateTo('about'));
+    expect(result.current.currentPage).toBe('about');
+    expect(window.history.pushState).toHaveBeenCalledWith(null, '', '/about');
+  });
+
+  it('returns to the homepage and reveals the target section from a dedicated page', () => {
+    window.history.pushState(null, '', '/about');
     const { result } = renderHook(() => useSiteState(defaultVisible));
     act(() => result.current.navigateTo('contact'));
-    expect(window.history.replaceState).toHaveBeenCalledWith(null, '', '#contact');
+    expect(result.current.currentPage).toBe('home');
+    expect(result.current.revealedSections).toContain('contact');
+    expect(window.history.pushState).toHaveBeenCalledWith(null, '', '/#contact');
   });
 
-  it('clears URL hash when navigating to hero', () => {
+  it('updates URL hash for regular homepage sections', () => {
+    const { result } = renderHook(() => useSiteState(defaultVisible));
+    act(() => result.current.navigateTo('contact'));
+    expect(window.history.pushState).toHaveBeenCalledWith(null, '', '/#contact');
+  });
+
+  it('returns to the homepage root when navigating to hero', () => {
+    window.history.pushState(null, '', '/purpose');
     const { result } = renderHook(() => useSiteState(defaultVisible));
     act(() => result.current.navigateTo('hero'));
-    expect(window.history.replaceState).toHaveBeenCalledWith(
-      null, '', expect.stringContaining(window.location.pathname)
-    );
+    expect(result.current.currentPage).toBe('home');
+    expect(window.history.pushState).toHaveBeenCalledWith(null, '', '/');
   });
 });

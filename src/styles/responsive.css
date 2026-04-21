@@ -12,6 +12,7 @@
   }
 
   .hero-emblem-shell {
+    justify-self: start;
     justify-content: start;
   }
 
@@ -58,7 +59,7 @@
 
   .hero-layout {
     min-height: auto;
-    padding: 52px 0 46px;
+    padding: 44px 0 38px;
   }
 
   .content-section,

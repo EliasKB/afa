@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import {
   chapterAnchorMap,
+  dedicatedPageSections,
   defaultVisibleSections,
   footerSectionOrder,
   getParentSectionId,
@@ -10,34 +11,43 @@ import {
 } from './siteMap';
 
 describe('siteMap constants', () => {
-  it('defaultVisibleSections contains news, about, purpose', () => {
-    expect(defaultVisibleSections).toEqual(expect.arrayContaining(['news', 'about', 'purpose']));
+  it('defaultVisibleSections only keeps news visible on first load', () => {
+    expect(defaultVisibleSections).toEqual(['news']);
   });
 
-  it('sectionMenuOrder contains all 8 navigation sections', () => {
-    expect(sectionMenuOrder).toHaveLength(8);
+  it('sectionMenuOrder excludes chapters from the header menu', () => {
+    expect(sectionMenuOrder).toHaveLength(7);
     expect(sectionMenuOrder).toEqual(
-      expect.arrayContaining(['about', 'chapters', 'purpose', 'policy', 'news', 'contact', 'support', 'engage'])
+      expect.arrayContaining(['about', 'purpose', 'policy', 'news', 'contact', 'support', 'engage'])
     );
+    expect(sectionMenuOrder).not.toContain('chapters');
   });
 
-  it('pageSectionOrder contains all 8 content sections', () => {
-    expect(pageSectionOrder).toHaveLength(8);
+  it('dedicatedPageSections contains about, purpose, and chapters', () => {
+    expect(dedicatedPageSections).toEqual(['about', 'purpose', 'chapters']);
+  });
+
+  it('pageSectionOrder contains the 5 homepage content sections', () => {
+    expect(pageSectionOrder).toHaveLength(5);
     expect(pageSectionOrder).toEqual(
-      expect.arrayContaining(['news', 'about', 'purpose', 'chapters', 'policy', 'contact', 'support', 'engage'])
+      expect.arrayContaining(['news', 'policy', 'contact', 'support', 'engage'])
     );
+    expect(pageSectionOrder).not.toContain('chapters');
   });
 
   it('footerSectionOrder contains expected sections', () => {
     expect(footerSectionOrder).toEqual(
-      expect.arrayContaining(['about', 'purpose', 'news', 'contact', 'support', 'engage'])
+      expect.arrayContaining(['about', 'purpose', 'chapters', 'news', 'contact', 'support', 'engage'])
     );
   });
 
-  it('revealableSections includes all navigable sections', () => {
+  it('revealableSections only includes homepage-revealable sections', () => {
     expect(revealableSections).toEqual(
-      expect.arrayContaining(['about', 'news', 'purpose', 'chapters', 'policy', 'contact', 'support', 'engage'])
+      expect.arrayContaining(['news', 'policy', 'contact', 'support', 'engage'])
     );
+    expect(revealableSections).not.toContain('about');
+    expect(revealableSections).not.toContain('purpose');
+    expect(revealableSections).not.toContain('chapters');
   });
 
   it('chapterAnchorMap maps all 4 chapters to chapters section', () => {

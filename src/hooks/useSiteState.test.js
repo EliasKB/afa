@@ -120,10 +120,10 @@ describe('useSiteState — navigateTo', () => {
   });
 
   it('reveals a hidden section when navigating to it', () => {
-    const { result } = renderHook(() => useSiteState(defaultVisible));
-    expect(result.current.revealedSections).not.toContain('contact');
-    act(() => result.current.navigateTo('contact'));
-    expect(result.current.revealedSections).toContain('contact');
+    const { result } = renderHook(() => useSiteState([]));
+    expect(result.current.revealedSections).not.toContain('news');
+    act(() => result.current.navigateTo('news'));
+    expect(result.current.revealedSections).toContain('news');
   });
 
   it('does not duplicate an already visible section', () => {
@@ -154,19 +154,17 @@ describe('useSiteState — navigateTo', () => {
     expect(window.history.pushState).toHaveBeenCalledWith(null, '', '/about');
   });
 
-  it('returns to the homepage and reveals the target section from a dedicated page', () => {
-    window.history.pushState(null, '', '/about');
+  it('navigates to the dedicated contact page', () => {
     const { result } = renderHook(() => useSiteState(defaultVisible));
     act(() => result.current.navigateTo('contact'));
-    expect(result.current.currentPage).toBe('home');
-    expect(result.current.revealedSections).toContain('contact');
-    expect(window.history.pushState).toHaveBeenCalledWith(null, '', '/#contact');
+    expect(result.current.currentPage).toBe('contact');
+    expect(window.history.pushState).toHaveBeenCalledWith(null, '', '/contact');
   });
 
   it('updates URL hash for regular homepage sections', () => {
     const { result } = renderHook(() => useSiteState(defaultVisible));
-    act(() => result.current.navigateTo('contact'));
-    expect(window.history.pushState).toHaveBeenCalledWith(null, '', '/#contact');
+    act(() => result.current.navigateTo('news'));
+    expect(window.history.pushState).toHaveBeenCalledWith(null, '', '/#news');
   });
 
   it('returns to the homepage root when navigating to hero', () => {

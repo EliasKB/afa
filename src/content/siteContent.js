@@ -1,4 +1,6 @@
 import { chapterEvents } from './chapterEvents';
+import eventApril19Image1 from '../assets/IMG_20260419_232456_132.jpg';
+import eventApril19Image2 from '../assets/IMG_20260419_232456_1321.jpg';
 
 function withChapterEvents(language, items) {
   return items.map((item) => ({
@@ -93,16 +95,24 @@ export const siteContent = {
       intro: '',
       items: [
         {
-          date: '20 april 2026',
-          title: 'Lanseringsfas för webbplats och organisation',
-          text:
-            'AFA etablerar nu sin digitala närvaro med fokus på trovärdig information, tydlig struktur och långsiktig kommunikation.',
+          date: '19 april 2026',
+          title: 'Tack för en fantastisk dag!',
+          text: 'Vi är djupt tacksamma för alla er som var med och bidrog till att göra dagen så speciell.',
+          images: [
+            { src: eventApril19Image1, alt: 'Bilder från AFA-evenemang 19 april 2026' },
+            { src: eventApril19Image2, alt: 'Bilder från AFA-evenemang 19 april 2026' },
+          ],
+          body: [
+            'Vi vill rikta ett varmt tack till er alla som bidrog till en fantastisk dag! Det är tack vare er närvaro och engagemang som dagen blev så minnesvärd och fylld av glädje.',
+          ],
+          link: { label: 'Besök vårt Instagram för fler bilder och videos', href: 'https://www.instagram.com/academics_from_afghanistan/' },
         },
         {
-          date: 'Maj 2026',
-          title: 'Regional organisering fortsätter',
+          date: '2 maj 2026',
+          upcoming: true,
+          title: 'AFA Event #4: Inspirationsdag Göteborg',
           text:
-            'Arbetet med att definiera AFA Stockholm, AFA Väst, AFA Söder och AFA Norrland fortsätter för att skapa tydliga kontaktpunkter i hela landet.',
+            'Nästa stopp är Göteborg — en dag fylld av karriärsamtal, CV-tips och entreprenörskap på Krokslätts Fabriker i Mölndal. Start kl. 13:00. Du får ta med upp till tre gäster. Anmäl dig via Discord senast 1 maj.',
         },
         {
           date: 'Kommande',
@@ -399,16 +409,24 @@ export const siteContent = {
       intro: '',
       items: [
         {
-          date: 'April 20, 2026',
-          title: 'Website and organization launch phase',
-          text:
-            'AFA is establishing its digital presence with an emphasis on credible information, clear structure, and long-term communication.',
+          date: 'April 19, 2026',
+          title: 'Thank you for an amazing day!',
+          text: 'We are deeply grateful for everyone who was there and helped make the day so special.',
+          images: [
+            { src: eventApril19Image1, alt: 'Photos from the AFA event on April 19, 2026' },
+            { src: eventApril19Image2, alt: 'Photos from the AFA event on April 19, 2026' },
+          ],
+          body: [
+            'We want to extend a warm thank you to all of you who contributed to a fantastic day! It is thanks to your presence and engagement that the day became so memorable and full of joy.',
+          ],
+          link: { label: 'Visit our Instagram for more photos and videos', href: 'https://www.instagram.com/academics_from_afghanistan/' },
         },
         {
-          date: 'May 2026',
-          title: 'Regional organization continues',
+          date: 'May 2, 2026',
+          upcoming: true,
+          title: 'AFA Event #4: Inspiration Day Gothenburg',
           text:
-            'Work is ongoing to define AFA Stockholm, AFA West, AFA South, and AFA Norrland as clear contact points across Sweden.',
+            'Next stop is Gothenburg — a full day of career talks, CV tips, and entrepreneurship at Krokslätts Fabriker in Mölndal. Doors open at 13:00. You may bring up to three guests. Register via Discord by May 1.',
         },
         {
           date: 'Coming soon',

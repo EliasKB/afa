@@ -53,6 +53,14 @@ function App() {
     contentSections = <PurposeSection content={content.purpose} />;
   } else if (currentPage === 'chapters') {
     contentSections = <ChaptersSection content={content.chapters} logoSrc={theme === 'dark' ? circleLogoDark : circleLogoLight} />;
+  } else if (currentPage === 'policy') {
+    contentSections = <PolicySection content={content.policy} />;
+  } else if (currentPage === 'contact') {
+    contentSections = <ActionSection content={content.contact} />;
+  } else if (currentPage === 'support') {
+    contentSections = <ActionSection content={content.support} />;
+  } else if (currentPage === 'engage') {
+    contentSections = <ActionSection content={content.engage} />;
   } else {
     contentSections = pageSectionOrder.map((sectionId) => {
       if (!revealedSections.includes(sectionId)) {

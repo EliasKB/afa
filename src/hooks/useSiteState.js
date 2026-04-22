@@ -29,6 +29,22 @@ function getCurrentPage(pathname) {
     return 'chapters';
   }
 
+  if (pathname === '/policy') {
+    return 'policy';
+  }
+
+  if (pathname === '/contact') {
+    return 'contact';
+  }
+
+  if (pathname === '/support') {
+    return 'support';
+  }
+
+  if (pathname === '/engage') {
+    return 'engage';
+  }
+
   return 'home';
 }
 
@@ -47,6 +63,22 @@ function getPathForTarget(targetId) {
 
   if (targetId.startsWith('chapter-')) {
     return `/chapters#${targetId}`;
+  }
+
+  if (targetId === 'policy') {
+    return '/policy';
+  }
+
+  if (targetId === 'contact') {
+    return '/contact';
+  }
+
+  if (targetId === 'support') {
+    return '/support';
+  }
+
+  if (targetId === 'engage') {
+    return '/engage';
   }
 
   if (targetId === 'hero') {

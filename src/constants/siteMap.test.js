@@ -23,15 +23,14 @@ describe('siteMap constants', () => {
     expect(sectionMenuOrder).not.toContain('chapters');
   });
 
-  it('dedicatedPageSections contains about, purpose, and chapters', () => {
-    expect(dedicatedPageSections).toEqual(['about', 'purpose', 'chapters']);
+  it('dedicatedPageSections contains all dedicated page sections', () => {
+    expect(dedicatedPageSections).toEqual(
+      expect.arrayContaining(['about', 'purpose', 'chapters', 'policy', 'contact', 'support', 'engage'])
+    );
   });
 
-  it('pageSectionOrder contains the 5 homepage content sections', () => {
-    expect(pageSectionOrder).toHaveLength(5);
-    expect(pageSectionOrder).toEqual(
-      expect.arrayContaining(['news', 'policy', 'contact', 'support', 'engage'])
-    );
+  it('pageSectionOrder contains only news as a homepage section', () => {
+    expect(pageSectionOrder).toEqual(['news']);
     expect(pageSectionOrder).not.toContain('chapters');
   });
 
@@ -41,13 +40,13 @@ describe('siteMap constants', () => {
     );
   });
 
-  it('revealableSections only includes homepage-revealable sections', () => {
-    expect(revealableSections).toEqual(
-      expect.arrayContaining(['news', 'policy', 'contact', 'support', 'engage'])
-    );
+  it('revealableSections only includes news as a homepage-revealable section', () => {
+    expect(revealableSections).toEqual(['news']);
     expect(revealableSections).not.toContain('about');
     expect(revealableSections).not.toContain('purpose');
     expect(revealableSections).not.toContain('chapters');
+    expect(revealableSections).not.toContain('contact');
+    expect(revealableSections).not.toContain('policy');
   });
 
   it('chapterAnchorMap maps all 4 chapters to chapters section', () => {

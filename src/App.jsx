@@ -1,5 +1,7 @@
 import brandLogo from './assets/logo_light.png';
 import heroEmblem from './assets/svart_logo_stor.png';
+import circleLogoLight from './assets/logo_light_circle.png';
+import circleLogoDark from './assets/svart_logo_stor_circle.png';
 import { Footer } from './components/layout/Footer';
 import { Header } from './components/layout/Header';
 import { ChapterSidebar } from './components/sidebar/ChapterSidebar';
@@ -14,7 +16,7 @@ import { siteContent } from './content/siteContent';
 import {
   defaultVisibleSections,
   pageSectionOrder,
-  sectionMenuOrder,
+  sectionMenuGroups as menuGroupDefs,
 } from './constants/siteMap';
 import { useSiteState } from './hooks/useSiteState';
 
@@ -32,9 +34,14 @@ function App() {
   } = useSiteState(defaultVisibleSections);
   const content = siteContent[language];
 
-  const sectionMenuItems = sectionMenuOrder.map((id) => ({
-    id,
-    label: content.navigation[id],
+  const sectionMenuItems = menuGroupDefs.map((group) => ({
+    groupId: group.id,
+    groupLabel: content.navigationGroups[group.id],
+    items: group.items.map((id) => ({
+      id,
+      label: content.navigation[id],
+      hint: content.navigationHints[id],
+    })),
   }));
   const isHomePage = currentPage === 'home';
 
@@ -45,7 +52,7 @@ function App() {
   } else if (currentPage === 'purpose') {
     contentSections = <PurposeSection content={content.purpose} />;
   } else if (currentPage === 'chapters') {
-    contentSections = <ChaptersSection content={content.chapters} />;
+    contentSections = <ChaptersSection content={content.chapters} logoSrc={theme === 'dark' ? circleLogoDark : circleLogoLight} />;
   } else {
     contentSections = pageSectionOrder.map((sectionId) => {
       if (!revealedSections.includes(sectionId)) {
@@ -79,9 +86,9 @@ function App() {
   return (
     <div className="page-shell">
       <Header
-        brandLogo={brandLogo}
+        brandLogo={circleLogoLight}
         content={content.header}
-        darkBrandLogo={heroEmblem}
+        darkBrandLogo={circleLogoDark}
         menuItems={sectionMenuItems}
         menuOpen={menuOpen}
         onNavigate={navigateTo}
@@ -108,7 +115,9 @@ function App() {
       </main>
 
       <Footer
-        brandLogo={brandLogo}
+        brandLogo={circleLogoLight}
+        darkBrandLogo={circleLogoDark}
+        theme={theme}
         content={content.footer}
         onNavigate={navigateTo}
       />

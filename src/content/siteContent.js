@@ -19,6 +19,21 @@ export const siteContent = {
       support: 'Stöd oss',
       engage: 'Engagera dig',
     },
+    navigationHints: {
+      about: 'vilka vi är',
+      purpose: 'tio mål',
+      policy: 'våra regler',
+      chapters: 'fyra regioner',
+      support: 'bidra ekonomiskt',
+      engage: 'bli aktiv',
+      news: 'senaste nytt',
+      contact: 'nå oss',
+    },
+    navigationGroups: {
+      'who-we-are': 'Vem vi är',
+      'get-involved': 'Engagera dig',
+      'follow': 'Följ oss',
+    },
     header: {
       brandName: 'AFA',
       utilityLinks: [
@@ -37,12 +52,12 @@ export const siteContent = {
       menuTitle: 'Navigera',
     },
     hero: {
-      eyebrow: 'Nationellt akademiskt nätverk',
+      eyebrow: '',
       title: 'AFA',
       subtitle: 'Akademiker från Afghanistan',
       tagline: 'Connecting Minds, Empowering Futures.',
       lead:
-        'AFA samlar afghanska akademiker i Sverige i ett professionellt nätverk för kunskapsutbyte, yrkesmässig utveckling och långsiktig gemenskap.',
+        'AFA samlar svenska akademiker med rötter i Afghanistan i ett professionellt nätverk för kunskapsutbyte, yrkesmässig utveckling och långsiktig gemenskap.',
       body: '',
       primaryAction: {
         label: 'Läs om AFA',
@@ -63,21 +78,19 @@ export const siteContent = {
     sidebar: {
       eyebrow: 'Regional närvaro',
       title: 'AFA:s lokalavdelningar',
-      text:
-        'Den fasta vänsterspalten visar hur organisationen är förankrad lokalt och leder vidare till kapitel som kan öppnas vid behov.',
+      text: '',
       chapters: [
-        { label: 'AFA Stockholm', target: 'chapter-stockholm' },
-        { label: 'AFA Väst', target: 'chapter-west' },
-        { label: 'AFA Söder', target: 'chapter-south' },
-        { label: 'AFA Norrland', target: 'chapter-norrland' },
+        { label: 'AFA Stockholm', target: 'chapter-stockholm', accent: 'ocean' },
+        { label: 'AFA Väst', target: 'chapter-west', accent: 'violet' },
+        { label: 'AFA Söder', target: 'chapter-south', accent: 'sun' },
+        { label: 'AFA Norrland', target: 'chapter-norrland', accent: 'frost' },
       ],
     },
     news: {
       id: 'news',
-      eyebrow: 'Aktuellt',
+      eyebrow: '',
       title: 'Nyheter',
-      intro:
-        'Uppdateringar presenteras i en tydlig och saklig form för att visa aktivitet, riktning och organisatorisk utveckling.',
+      intro: '',
       items: [
         {
           date: '20 april 2026',
@@ -93,6 +106,7 @@ export const siteContent = {
         },
         {
           date: 'Kommande',
+          upcoming: true,
           title: 'Seminarier och mentorskap under planering',
           text:
             'Kommande initiativ kommer att presenteras som professionella aktiviteter med fokus på nätverk, karriärstöd och kunskapsdelning.',
@@ -141,7 +155,7 @@ export const siteContent = {
     },
     purpose: {
       id: 'purpose',
-      eyebrow: 'Inriktning',
+      eyebrow: '',
       title: 'Syfte och mål',
       intro:
         'Målen ska presenteras som ett tydligt arbetsprogram, inte som marknadsförande slogans. Nummerordning och god läsbarhet är viktigare än dekorativa boxar.',
@@ -160,36 +174,39 @@ export const siteContent = {
     },
     chapters: {
       id: 'chapters',
-      eyebrow: 'Lokal närvaro',
+      eyebrow: '',
       title: 'Lokalavdelningar',
-      intro:
-        'När sektionen öppnas ska varje lokalavdelning framstå som en del av en större nationell struktur, med kortfattad men professionell information.',
+      intro: '',
       items: withChapterEvents('sv', [
         {
           id: 'chapter-stockholm',
-          label: 'Lokalavdelning',
+          label: '',
           title: 'AFA Stockholm',
+          accent: 'ocean',
           summary:
             'Fokus på nätverk, seminarier och professionella mötesplatser i Stockholmsregionen.',
         },
         {
           id: 'chapter-west',
-          label: 'Lokalavdelning',
+          label: '',
           title: 'AFA Väst',
+          accent: 'violet',
           summary:
             'Samlar medlemmar i västra Sverige kring karriärfrågor, lokala initiativ och regional samverkan.',
         },
         {
           id: 'chapter-south',
-          label: 'Lokalavdelning',
+          label: '',
           title: 'AFA Söder',
+          accent: 'sun',
           summary:
             'Skapar utrymme för kunskapsutbyte, medlemsaktiviteter och professionella kontakter i södra Sverige.',
         },
         {
           id: 'chapter-norrland',
-          label: 'Lokalavdelning',
+          label: '',
           title: 'AFA Norrland',
+          accent: 'frost',
           summary:
             'Binder samman akademiker i norra Sverige och stärker kontaktytor över större geografiska avstånd.',
         },
@@ -197,7 +214,7 @@ export const siteContent = {
     },
     policy: {
       id: 'policy',
-      eyebrow: 'Riktlinjer',
+      eyebrow: '',
       title: 'Regler och policy',
       intro:
         'Policysektionen ska vara enkel att läsa och signalera trygghet, seriositet och professionella ramar för gemenskapen.',
@@ -236,19 +253,19 @@ export const siteContent = {
     },
     contact: {
       id: 'contact',
-      eyebrow: 'Kontakt',
+      eyebrow: '',
       title: 'Kontakta oss',
-      intro:
-        'Kontaktsektionen ska vara rak och professionell, med tydliga kontaktvägar och kort status där information ännu inte finns tillgänglig.',
-      items: [
-        { label: 'E-post', detail: 'Academicsfromafghanistan@gmail.com' },
-        { label: 'Sociala medier', detail: 'Kommer snart' },
-        { label: 'Community', detail: 'Kommer snart' },
+      intro: '',
+      channels: [
+        { label: 'E-post', hint: 'Skriv till oss', icon: 'email', href: 'mailto:Academicsfromafghanistan@gmail.com' },
+        { label: 'Discord', hint: 'Gå med i communityt', icon: 'discord', href: 'https://discord.gg/9RSMFK6W' },
+        { label: 'Instagram', hint: 'Följ oss', icon: 'instagram', href: 'https://www.instagram.com/academics_from_afghanistan/' },
+        { label: 'LinkedIn', hint: 'Koppla upp dig', icon: 'linkedin', href: 'https://www.linkedin.com/company/109980083' },
       ],
     },
     support: {
       id: 'support',
-      eyebrow: 'Bidra',
+      eyebrow: '',
       title: 'Stöd oss',
       intro:
         'Den här delen ska signalera att stöd kan vara ekonomiskt, kompetensbaserat eller samarbetsinriktat utan att kännas som aggressiv insamling.',
@@ -260,7 +277,7 @@ export const siteContent = {
     },
     engage: {
       id: 'engage',
-      eyebrow: 'Delta',
+      eyebrow: '',
       title: 'Engagera dig',
       intro:
         'Besökaren ska förstå att medlemskap, volontärinsatser och mentorskap är vägar in i organisationen, även om detaljer publiceras senare.',
@@ -289,6 +306,11 @@ export const siteContent = {
       contactDetails: [
         'Academicsfromafghanistan@gmail.com',
       ],
+      socialLinks: [
+        { label: 'Discord', icon: 'discord', href: 'https://discord.gg/9RSMFK6W' },
+        { label: 'Instagram', icon: 'instagram', href: 'https://www.instagram.com/academics_from_afghanistan/' },
+        { label: 'LinkedIn', icon: 'linkedin', href: 'https://www.linkedin.com/company/109980083' },
+      ],
       copyright: '© 2026 AFA. Alla rättigheter förbehållna.',
     },
   },
@@ -302,6 +324,21 @@ export const siteContent = {
       contact: 'Contact Us',
       support: 'Support Us',
       engage: 'Get Involved',
+    },
+    navigationHints: {
+      about: 'who we are',
+      purpose: 'our 10 goals',
+      policy: 'our standards',
+      chapters: 'four regions',
+      support: 'fund our work',
+      engage: 'join us',
+      news: 'latest updates',
+      contact: 'reach the team',
+    },
+    navigationGroups: {
+      'who-we-are': 'Who We Are',
+      'get-involved': 'Get Involved',
+      'follow': 'Follow',
     },
     header: {
       brandName: 'AFA',
@@ -321,7 +358,7 @@ export const siteContent = {
       menuTitle: 'Navigate',
     },
     hero: {
-      eyebrow: 'National academic network',
+      eyebrow: '',
       title: 'AFA',
       subtitle: 'Academics for Afghanistan',
       tagline: 'Connecting Minds, Empowering Futures.',
@@ -347,21 +384,19 @@ export const siteContent = {
     sidebar: {
       eyebrow: 'Regional presence',
       title: 'AFA Local Chapters',
-      text:
-        'The permanent sidebar shows how the organization is rooted locally and leads to chapter entries that can be opened when needed.',
+      text: '',
       chapters: [
-        { label: 'AFA Stockholm', target: 'chapter-stockholm' },
-        { label: 'AFA West', target: 'chapter-west' },
-        { label: 'AFA South', target: 'chapter-south' },
-        { label: 'AFA Norrland', target: 'chapter-norrland' },
+        { label: 'AFA Stockholm', target: 'chapter-stockholm', accent: 'ocean' },
+        { label: 'AFA West', target: 'chapter-west', accent: 'violet' },
+        { label: 'AFA South', target: 'chapter-south', accent: 'sun' },
+        { label: 'AFA Norrland', target: 'chapter-norrland', accent: 'frost' },
       ],
     },
     news: {
       id: 'news',
-      eyebrow: 'Updates',
+      eyebrow: '',
       title: 'News',
-      intro:
-        'Updates should appear in a clear editorial format that signals activity, direction, and organizational development.',
+      intro: '',
       items: [
         {
           date: 'April 20, 2026',
@@ -377,6 +412,7 @@ export const siteContent = {
         },
         {
           date: 'Coming soon',
+          upcoming: true,
           title: 'Seminars and mentorship in preparation',
           text:
             'Upcoming initiatives will be presented as professional activities focused on networking, career support, and knowledge sharing.',
@@ -425,7 +461,7 @@ export const siteContent = {
     },
     purpose: {
       id: 'purpose',
-      eyebrow: 'Direction',
+      eyebrow: '',
       title: 'Purpose and Goals',
       intro:
         'The goals should read like a structured work program rather than promotional slogans. Numbering and readability matter more than decorative boxes.',
@@ -444,36 +480,39 @@ export const siteContent = {
     },
     chapters: {
       id: 'chapters',
-      eyebrow: 'Local presence',
+      eyebrow: '',
       title: 'Local Chapters',
-      intro:
-        'When opened, each chapter should feel like part of a broader national structure, with concise but professional information.',
+      intro: '',
       items: withChapterEvents('en', [
         {
           id: 'chapter-stockholm',
-          label: 'Local chapter',
+          label: '',
           title: 'AFA Stockholm',
+          accent: 'ocean',
           summary:
             'Focused on networking, seminars, and professional meeting points in the Stockholm region.',
         },
         {
           id: 'chapter-west',
-          label: 'Local chapter',
+          label: '',
           title: 'AFA West',
+          accent: 'violet',
           summary:
             'Brings together members in western Sweden around careers, local initiatives, and regional collaboration.',
         },
         {
           id: 'chapter-south',
-          label: 'Local chapter',
+          label: '',
           title: 'AFA South',
+          accent: 'sun',
           summary:
             'Creates space for knowledge exchange, member activities, and professional contacts in southern Sweden.',
         },
         {
           id: 'chapter-norrland',
-          label: 'Local chapter',
+          label: '',
           title: 'AFA Norrland',
+          accent: 'frost',
           summary:
             'Connects academics in northern Sweden and strengthens collaboration across greater geographic distances.',
         },
@@ -481,7 +520,7 @@ export const siteContent = {
     },
     policy: {
       id: 'policy',
-      eyebrow: 'Guidelines',
+      eyebrow: '',
       title: 'Rules and Policy',
       intro:
         'The policy section should be easy to read and signal safety, seriousness, and professional expectations for the community.',
@@ -520,19 +559,19 @@ export const siteContent = {
     },
     contact: {
       id: 'contact',
-      eyebrow: 'Contact',
+      eyebrow: '',
       title: 'Contact Us',
-      intro:
-        'The contact section should be direct and professional, with clear routes and short status notes where information is still pending.',
-      items: [
-        { label: 'Email', detail: 'Academicsfromafghanistan@gmail.com' },
-        { label: 'Social media', detail: 'Coming soon' },
-        { label: 'Community', detail: 'Coming soon' },
+      intro: '',
+      channels: [
+        { label: 'Email', hint: 'Write to us', icon: 'email', href: 'mailto:Academicsfromafghanistan@gmail.com' },
+        { label: 'Discord', hint: 'Join the community', icon: 'discord', href: 'https://discord.gg/9RSMFK6W' },
+        { label: 'Instagram', hint: 'Follow us', icon: 'instagram', href: 'https://www.instagram.com/academics_from_afghanistan/' },
+        { label: 'LinkedIn', hint: 'Connect with us', icon: 'linkedin', href: 'https://www.linkedin.com/company/109980083' },
       ],
     },
     support: {
       id: 'support',
-      eyebrow: 'Contribute',
+      eyebrow: '',
       title: 'Support Us',
       intro:
         'This section should signal that support can be financial, expertise-based, or collaborative without feeling like aggressive fundraising.',
@@ -544,7 +583,7 @@ export const siteContent = {
     },
     engage: {
       id: 'engage',
-      eyebrow: 'Participate',
+      eyebrow: '',
       title: 'Get Involved',
       intro:
         'Visitors should understand that membership, volunteering, and mentorship are entry points into the organization even when full details are published later.',
@@ -572,6 +611,11 @@ export const siteContent = {
       contactTitle: 'Contact',
       contactDetails: [
         'Academicsfromafghanistan@gmail.com',
+      ],
+      socialLinks: [
+        { label: 'Discord', icon: 'discord', href: 'https://discord.gg/9RSMFK6W' },
+        { label: 'Instagram', icon: 'instagram', href: 'https://www.instagram.com/academics_from_afghanistan/' },
+        { label: 'LinkedIn', icon: 'linkedin', href: 'https://www.linkedin.com/company/109980083' },
       ],
       copyright: '© 2026 AFA. All rights reserved.',
     },

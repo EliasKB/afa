@@ -12,6 +12,12 @@ export const sectionMenuOrder = [
   'engage',
 ];
 
+export const sectionMenuGroups = [
+  { id: 'who-we-are', items: ['about', 'purpose', 'policy'] },
+  { id: 'get-involved', items: ['chapters', 'support', 'engage'] },
+  { id: 'follow', items: ['news', 'contact'] },
+];
+
 export const pageSectionOrder = [
   'news',
   'policy',

@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import App from './App';
@@ -17,9 +17,9 @@ describe('App routing', () => {
     expect(screen.getByRole('heading', { level: 1, name: 'AFA' })).toBeInTheDocument();
   });
 
-  it('keeps Local Chapters out of the header menu while retaining the footer link', () => {
+  it('shows Local Chapters in both the header menu and the footer', () => {
     render(<App />);
-    expect(screen.getAllByText('Local Chapters')).toHaveLength(1);
+    expect(screen.getAllByText('Local Chapters').length).toBeGreaterThanOrEqual(1);
   });
 
   it('renders the dedicated about page without the homepage hero', () => {
@@ -58,7 +58,9 @@ describe('App routing', () => {
 
   it('navigates to the dedicated chapters page from the footer', async () => {
     render(<App />);
-    await userEvent.click(screen.getByText('Local Chapters'));
+    const footer = document.querySelector('.site-footer');
+    const { getByText } = within(footer);
+    await userEvent.click(getByText('Local Chapters'));
     expect(window.location.pathname).toBe('/chapters');
     expect(screen.getByRole('heading', { name: 'Local Chapters' })).toBeInTheDocument();
   });

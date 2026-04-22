@@ -4,8 +4,16 @@ import { describe, expect, it, vi } from 'vitest';
 import { SectionMenu } from './SectionMenu';
 
 const items = [
-  { id: 'about', label: 'About Us' },
-  { id: 'news', label: 'News' },
+  {
+    groupId: 'who-we-are',
+    groupLabel: 'Who We Are',
+    items: [{ id: 'about', label: 'About Us', hint: 'who we are' }],
+  },
+  {
+    groupId: 'follow',
+    groupLabel: 'Follow',
+    items: [{ id: 'news', label: 'News', hint: 'latest updates' }],
+  },
 ];
 
 describe('SectionMenu — rendering', () => {

@@ -9,6 +9,8 @@ export const chapterEvents = {
         {
           id: 'event-gothenburg-2026-05-02',
           title: 'Event i Göteborg den 2:a maj',
+          date: '2 maj 2026',
+          location: 'Göteborg',
           paragraphs: [
             'Introduktionslekar och isbrytare så alla vågar prata.',
             'Kort presentation av AFA, våra mål och vad vi ska uppnå i framtiden.',
@@ -30,11 +32,10 @@ export const chapterEvents = {
         {
           id: 'event-stockholm-2026-04-19',
           title: 'AFA Event #3: Entreprenörskap Acceleration',
+          date: '19 april 2026',
+          location: 'Kistatornet',
           paragraphs: [
             'Vi tar nästa steg och gör det från toppen. Välkommen till en dag av action på sista våningen i Kistatornet.',
-            'Datum: 19 april 2026. Start 13:00 och vi fortsätter tills vi är klara.',
-            'Plats: Kistatornet, högsta våningen.',
-            'Sista anmälan: 17 april.',
             'Ta gärna med en person som inte har studerat på universitet eller någon med minst fem års erfarenhet inom exempelvis vård, industri, försvar, IT eller juridik.',
           ],
           bullets: [
@@ -54,10 +55,10 @@ export const chapterEvents = {
         {
           id: 'event-stockholm-2026-03-01',
           title: 'Entreprenörskapsdagen',
+          date: '1 mars 2026',
+          location: 'Luntmakargatan 22, Stockholm',
           paragraphs: [
             'Platserna var begränsade och medlemmar fick informationen före resten av gruppen för att vi skulle kunna planera rätt.',
-            'Var: Luntmakargatan 22, 111 37 Stockholm.',
-            'När: Söndag den 1 mars 2026, kl. 13:00 till 18:00. Insläpp mellan 12:45 och 13:15.',
             'Agenda presenterades på plats.',
             'Det bjöds på snacks och dryck, och gruppen åkte vidare till restaurang runt 17:00 för att hinna till iftar.',
             'Ta med laptop.',
@@ -71,10 +72,10 @@ export const chapterEvents = {
         {
           id: 'event-stockholm-2026-02-08',
           title: 'Entreprenörskap & Karriär',
+          date: '8 februari 2026',
+          location: 'Norrtullsgatan 2, Stockholm',
           paragraphs: [
             'Fysisk träff i Stockholm för nätverkande, CV-pepp och entreprenörssamtal på djupet.',
-            'Var: Norrtullsgatan 2, Stockholm.',
-            'När: Söndag den 8 februari 2026, kl. 15:00 till 21:00.',
             'Agenda: isbrytare, feedback på CV och LinkedIn samt erfarenhetsutbyte.',
             'Det bjöds på snacks och dryck, och senare på kvällen beställdes gemensam mat från en afghansk restaurang.',
             'Ta med laptop eller CV, leende och gott humör.',
@@ -90,6 +91,8 @@ export const chapterEvents = {
         {
           id: 'event-gothenburg-2026-05-02',
           title: 'Gothenburg Event on May 2',
+          date: 'May 2, 2026',
+          location: 'Gothenburg',
           paragraphs: [
             'Introduction games and icebreakers so everyone feels comfortable speaking.',
             'A short presentation of AFA, our goals, and what we want to achieve in the future.',
@@ -111,11 +114,10 @@ export const chapterEvents = {
         {
           id: 'event-stockholm-2026-04-19',
           title: 'AFA Event #3: Entrepreneurship Acceleration',
+          date: 'April 19, 2026',
+          location: 'Kistatornet',
           paragraphs: [
             'We are taking the next step and doing it from the top. Welcome to a full day of action on the top floor of Kistatornet.',
-            'Date: April 19, 2026. Start at 13:00 and continue until the program is complete.',
-            'Location: Kistatornet, top floor.',
-            'Final registration date: April 17.',
             'Bring someone who has not studied at university yet, or someone with at least five years of experience in fields such as healthcare, industry, defence, IT, or law.',
           ],
           bullets: [
@@ -135,10 +137,10 @@ export const chapterEvents = {
         {
           id: 'event-stockholm-2026-03-01',
           title: 'Entrepreneurship Day',
+          date: 'March 1, 2026',
+          location: 'Luntmakargatan 22, Stockholm',
           paragraphs: [
             'Places were limited, so members received the information before the rest of the group so planning could be done correctly.',
-            'Location: Luntmakargatan 22, 111 37 Stockholm.',
-            'Date: Sunday, March 1, 2026, from 13:00 to 18:00. Entry was between 12:45 and 13:15.',
             'The agenda was presented on site.',
             'Snacks and drinks were provided, and the group later continued to a restaurant around 17:00 to arrive in time for iftar.',
             'Bring a laptop.',
@@ -152,10 +154,10 @@ export const chapterEvents = {
         {
           id: 'event-stockholm-2026-02-08',
           title: 'Entrepreneurship & Career',
+          date: 'February 8, 2026',
+          location: 'Norrtullsgatan 2, Stockholm',
           paragraphs: [
             'An in-person event in Stockholm focused on networking, CV support, and deeper entrepreneurship discussions.',
-            'Location: Norrtullsgatan 2, Stockholm.',
-            'Date: Sunday, February 8, 2026, from 15:00 to 21:00.',
             'Agenda: icebreakers, feedback on CVs and LinkedIn, and shared experience exchange.',
             'Snacks and drinks were provided, and later in the evening the group ordered food together from an Afghan restaurant.',
             'Bring a laptop or CV, a smile, and a good mood.',

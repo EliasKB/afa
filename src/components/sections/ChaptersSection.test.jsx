@@ -60,10 +60,11 @@ describe('ChaptersSection', () => {
     expect(screen.getByRole('button', { name: /AFA Norrland/ })).toBeInTheDocument();
   });
 
-  it('keeps chapter details collapsed by default', () => {
+  it('keeps chapter event details collapsed by default', () => {
     render(<ChaptersSection content={content} />);
-    expect(screen.queryByText('Capital chapter.')).not.toBeInTheDocument();
+    // Summary appears as teaser in collapsed state — events do not
     expect(screen.queryByText('Entrepreneurship Day')).not.toBeInTheDocument();
+    expect(screen.queryByText('Stockholm spring event.')).not.toBeInTheDocument();
   });
 
   it('opens one chapter and renders its event content and image', async () => {
@@ -78,11 +79,10 @@ describe('ChaptersSection', () => {
   it('closes the previous chapter when another chapter is opened', async () => {
     render(<ChaptersSection content={content} />);
     await userEvent.click(screen.getByRole('button', { name: /AFA Stockholm/ }));
-    expect(screen.getByText('Capital chapter.')).toBeInTheDocument();
+    expect(screen.getByText('Entrepreneurship Day')).toBeInTheDocument();
 
     await userEvent.click(screen.getByRole('button', { name: /AFA West/ }));
-    expect(screen.queryByText('Capital chapter.')).not.toBeInTheDocument();
-    expect(screen.getByText('Western Sweden.')).toBeInTheDocument();
+    expect(screen.queryByText('Entrepreneurship Day')).not.toBeInTheDocument();
     expect(screen.getByText('Gothenburg Event')).toBeInTheDocument();
   });
 

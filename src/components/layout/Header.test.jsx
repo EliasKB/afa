@@ -19,9 +19,19 @@ const content = {
 };
 
 const menuItems = [
-  { id: 'about', label: 'About Us' },
-  { id: 'purpose', label: 'Purpose & Goals' },
-  { id: 'news', label: 'News' },
+  {
+    groupId: 'who-we-are',
+    groupLabel: 'Who We Are',
+    items: [
+      { id: 'about', label: 'About Us', hint: 'who we are' },
+      { id: 'purpose', label: 'Purpose & Goals', hint: 'our 10 goals' },
+    ],
+  },
+  {
+    groupId: 'follow',
+    groupLabel: 'Follow',
+    items: [{ id: 'news', label: 'News', hint: 'latest updates' }],
+  },
 ];
 
 const defaultProps = {
@@ -95,14 +105,16 @@ describe('Header — rendering', () => {
     expect(screen.getByLabelText('Open section menu')).toHaveAttribute('aria-expanded', 'true');
   });
 
-  it('shows + icon when menu is closed', () => {
+  it('shows hamburger icon when menu is closed', () => {
     render(<Header {...defaultProps} menuOpen={false} />);
-    expect(screen.getByText('+')).toBeInTheDocument();
+    const trigger = screen.getByLabelText('Open section menu');
+    expect(trigger.querySelector('svg')).toBeInTheDocument();
   });
 
-  it('shows − icon when menu is open', () => {
+  it('shows close icon when menu is open', () => {
     render(<Header {...defaultProps} menuOpen={true} />);
-    expect(screen.getByText('−')).toBeInTheDocument();
+    const trigger = screen.getByLabelText('Open section menu');
+    expect(trigger.querySelector('svg')).toBeInTheDocument();
   });
 });
 

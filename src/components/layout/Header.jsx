@@ -40,7 +40,20 @@ export function Header({
               onClick={onToggleMenu}
             >
               <span>{content.menuButtonLabel}</span>
-              <span className="menu-trigger-icon">{menuOpen ? '−' : '+'}</span>
+              <span className="menu-trigger-icon" aria-hidden="true">
+                {menuOpen ? (
+                  <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round">
+                    <line x1="4" y1="4" x2="16" y2="16" />
+                    <line x1="16" y1="4" x2="4" y2="16" />
+                  </svg>
+                ) : (
+                  <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round">
+                    <line x1="3" y1="6" x2="17" y2="6" />
+                    <line x1="3" y1="10" x2="17" y2="10" />
+                    <line x1="3" y1="14" x2="17" y2="14" />
+                  </svg>
+                )}
+              </span>
             </button>
 
             <button

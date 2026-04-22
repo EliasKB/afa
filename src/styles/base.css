@@ -1,0 +1,96 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  color: var(--page-ink);
+  font-family: var(--font-sans);
+  background: #081120;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  color: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.page-shell {
+  position: relative;
+  min-height: 100vh;
+}
+
+.page-shell::before {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  content: '';
+  background:
+    radial-gradient(ellipse 70% 55% at 82% 5%, rgba(67, 195, 179, 0.55), transparent),
+    radial-gradient(ellipse 65% 50% at 8% 96%, rgba(230, 161, 66, 0.48), transparent),
+    radial-gradient(ellipse at 50% 50%, rgba(10, 28, 56, 0.75), transparent 68%),
+    linear-gradient(160deg, #030a14 0%, #060f1e 50%, #030911 100%);
+}
+
+:root[data-theme='light'] .page-shell::before {
+  background:
+    radial-gradient(ellipse 70% 55% at 82% 5%, rgba(67, 195, 179, 0.38), transparent),
+    radial-gradient(ellipse 65% 50% at 8% 96%, rgba(230, 161, 66, 0.34), transparent),
+    linear-gradient(160deg, #cfe4f0 0%, #e4f1f9 50%, #d2e8f2 100%);
+}
+
+.section-eyebrow {
+  margin: 0 0 14px;
+  color: var(--page-accent);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.section-header {
+  max-width: 760px;
+  margin-bottom: 32px;
+}
+
+.section-header h2,
+.chapter-sidebar-rail h2,
+.footer-brand strong {
+  font-family: var(--font-display);
+}
+
+.section-header h2 {
+  margin: 0;
+  font-size: clamp(2rem, 3vw, 2.9rem);
+  line-height: 1.08;
+}
+
+.section-intro {
+  margin: 16px 0 0;
+  color: var(--page-body);
+  font-weight: 500;
+  font-size: 1.02rem;
+  line-height: 1.72;
+}

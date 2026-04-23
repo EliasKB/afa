@@ -79,6 +79,15 @@
     grid-template-columns: 1fr;
   }
 
+  .menu-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 15;
+    background: var(--page-panel-strong);
+    backdrop-filter: blur(4px);
+  }
+
   .hero-layout {
     min-height: auto;
     padding: 44px 0 38px;

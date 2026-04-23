@@ -365,7 +365,7 @@ export const siteContent = {
       },
       menuButtonLabel: 'Menu',
       menuButtonAria: 'Open section menu',
-      menuTitle: 'Navigate',
+      menuTitle: '',
     },
     hero: {
       eyebrow: '',

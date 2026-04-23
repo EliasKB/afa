@@ -18,6 +18,7 @@ import {
   pageSectionOrder,
   sectionMenuGroups as menuGroupDefs,
 } from './constants/siteMap';
+import { useEffect } from 'react';
 import { useSiteState } from './hooks/useSiteState';
 
 function App() {
@@ -32,6 +33,12 @@ function App() {
     toggleTheme,
     theme,
   } = useSiteState(defaultVisibleSections);
+
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [menuOpen]);
+
   const content = siteContent[language];
 
   const sectionMenuItems = menuGroupDefs.map((group) => ({
@@ -93,6 +100,9 @@ function App() {
 
   return (
     <div className="page-shell">
+      {menuOpen && (
+        <div className="menu-backdrop" onClick={() => setMenuOpen(false)} />
+      )}
       <Header
         brandLogo={circleLogoLight}
         content={content.header}
